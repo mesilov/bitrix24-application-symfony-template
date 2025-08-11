@@ -1,0 +1,34 @@
+app.localhost {
+    # Development domain with self-signed SSL
+	tls internal
+
+	root /app/public
+	encode zstd br gzip
+
+	# Security headers managed by Symfony nelmio/security-bundle
+
+	mercure {
+		publisher_jwt {env.MERCURE_PUBLISHER_JWT_KEY} {env.MERCURE_PUBLISHER_JWT_ALG}
+		subscriber_jwt {env.MERCURE_SUBSCRIBER_JWT_KEY} {env.MERCURE_SUBSCRIBER_JWT_ALG}
+		anonymous
+		subscriptions
+		{$MERCURE_EXTRA_DIRECTIVES}
+	}
+
+	vulcain
+
+	{$CADDY_SERVER_EXTRA_DIRECTIVES}
+
+	@phpRoute {
+		not path /.well-known/mercure*
+		not file {path}
+	}
+	rewrite @phpRoute index.php
+
+	@frontController path index.php
+	php @frontController
+
+	file_server {
+		hide *.php
+	}
+}

@@ -1,0 +1,45 @@
+{
+  "vhosts": [
+    { "name": "/" }
+  ],
+  "users": [
+    {
+      "name": "admin",
+      "password": "!ChangeThisAdminPassword!",
+      "tags": "administrator"
+    },
+    {
+      "name": "mgmt",
+      "password": "!ChangeThisMgmtPassword!",
+      "tags": "management"
+    },
+    {
+      "name": "app",
+      "password": "!ChangeThisAppPassword!",
+      "tags": ""
+    }
+  ],
+  "permissions": [
+    {
+      "user": "admin",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    },
+    {
+      "user": "mgmt",
+      "vhost": "/",
+      "configure": "",
+      "write": "",
+      "read": ".*"
+    },
+    {
+      "user": "app",
+      "vhost": "/",
+      "configure": "messages.*",
+      "write": "messages.*",
+      "read": "messages.*"
+    }
+  ]
+}
