@@ -62,6 +62,15 @@
             "config/packages/nelmio_security.yaml"
         ]
     },
+    "odolbeau/phone-number-bundle": {
+        "version": "5.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "0d4442802a90dd2d1d6c18618998b43f69af0d95"
+        }
+    },
     "phpstan/phpstan": {
         "version": "2.1",
         "recipe": {
