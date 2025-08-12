@@ -28,6 +28,7 @@ RUN set -eux; \
 	install-php-extensions \
 		@composer \
 		apcu \
+		bcmath \
 		intl \
 		opcache \
 		pdo_pgsql \
