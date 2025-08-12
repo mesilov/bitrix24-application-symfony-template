@@ -1,10 +1,30 @@
-/.idea/*
-/var/*
-/vendor/*
-/composer.phar
+/.idea
+/.vscode
+/volumes
+
+###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
+/var/
+/upload/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###
+
+
+
+###> friendsofphp/php-cs-fixer ###
 /.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###

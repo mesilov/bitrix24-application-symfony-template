@@ -1,67 +1,24 @@
 {
-    "name": "mesilov/bitrix24-application-symfony-template",
+    "name": "symfony/skeleton",
     "type": "project",
     "license": "MIT",
-    "description": "A minimal Symfony project with Bitrix24 application template",
-    "minimum-stability": "dev",
+    "description": "A minimal Symfony project recommended to create bare bones applications",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.4.10",
+        "php": ">=8.4.11",
         "ext-ctype": "*",
-        "ext-fileinfo": "*",
         "ext-iconv": "*",
-        "darsyn/ip": "^5.0.1",
-        "darsyn/ip-doctrine": "^5.0",
-        "doctrine/dbal": "^3.10.1",
-        "doctrine/doctrine-bundle": "^2.15.1",
-        "doctrine/doctrine-migrations-bundle": "^3.4.2",
-        "doctrine/orm": "^3.5.2",
-        "fig/http-message-util": ">=1.1.5",
-        "nelmio/security-bundle": "^3.5.1",
-        "nesbot/carbon": "^3.10.2",
-        "odolbeau/phone-number-bundle": ">=5",
-        "runtime/frankenphp-symfony": ">=0.2",
-        "sentry/sentry-symfony": ">=5.3.1",
-        "symfony/amqp-messenger": ">=7.3.2",
-        "symfony/asset": "7.3.*",
-        "symfony/asset-mapper": "7.3.*",
+        "runtime/frankenphp-symfony": "^0.2.0",
         "symfony/console": "7.3.*",
-        "symfony/doctrine-messenger": "7.3.*",
         "symfony/dotenv": "7.3.*",
-        "symfony/expression-language": "7.3.*",
-        "symfony/flex": "^2.8.1",
-        "symfony/form": "7.3.*",
+        "symfony/flex": "^2",
         "symfony/framework-bundle": "7.3.*",
-        "symfony/intl": "7.3.*",
-        "symfony/lock": "7.3.*",
-        "symfony/mailer": "7.3.*",
-        "symfony/mime": "7.3.*",
-        "symfony/monolog-bundle": "^3.10",
-        "symfony/notifier": "7.2.*",
-        "symfony/process": "7.2.*",
-        "symfony/property-access": "7.3.*",
-        "symfony/property-info": "7.3.*",
-        "symfony/rate-limiter": "7.3.*",
-        "symfony/resend-mailer": ">=7.3",
         "symfony/runtime": "7.3.*",
-        "symfony/security-bundle": "7.3.*",
-        "symfony/security-csrf": "7.3.*",
-        "symfony/serializer": "7.3.*",
-        "symfony/stimulus-bundle": "^2.29.1",
-        "symfony/string": "7.3.*",
-        "symfony/translation": "7.3.*",
-        "symfony/twig-bundle": "7.3.*",
-        "symfony/uid": "7.3.*",
-        "symfony/validator": "7.3.*",
-        "symfony/web-link": "7.3.*",
-        "symfony/yaml": "7.3.*",
-        "mesilov/bitrix24-php-lib": "dev-dev",
-        "twig/extra-bundle": "^2.12|^3.21",
-        "twig/twig": "^2.12|^3.21.1"
+        "symfony/yaml": "7.3.*"
     },
     "config": {
         "allow-plugins": {
-            "ergebnis/composer-normalize": true,
             "php-http/discovery": true,
             "symfony/flex": true,
             "symfony/runtime": true
@@ -92,8 +49,7 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "importmap:install": "symfony-cmd"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"
@@ -111,23 +67,5 @@
             "require": "7.3.*",
             "docker": true
         }
-    },
-    "require-dev": {
-        "dominikb/composer-license-checker": "^2.7",
-        "friendsofphp/php-cs-fixer": "^3.85.1",
-        "phpstan/phpstan": "^2.1.22",
-        "phpunit/phpunit": "^12.3.3",
-        "rector/rector": "^2.1.2",
-        "symfony/maker-bundle": "^1.64",
-        "ergebnis/composer-normalize": "^2.47",
-        "lendable/composer-license-checker": "^1.2.2",
-        "roave/security-advisories": "dev-latest",
-        "fakerphp/faker": ">=1.24.1",
-        "symfony/browser-kit": "7.2.*",
-        "symfony/css-selector": "7.2.*",
-        "symfony/debug-bundle": "7.2.*",
-        "symfony/phpunit-bridge": "^7.3.1",
-        "symfony/stopwatch": "7.2.*",
-        "symfony/web-profiler-bundle": "7.2.*"
     }
 }

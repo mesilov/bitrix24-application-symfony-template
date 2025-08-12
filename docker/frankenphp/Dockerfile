@@ -22,28 +22,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	file \
 	gettext \
 	git \
-	librabbitmq-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
 	install-php-extensions \
 		@composer \
-		amqp \
 		apcu \
 		intl \
 		opcache \
-		pdo_pgsql \
 		zip \
 	;
-
-# Install bcmath - need build dependencies first
-RUN set -eux; \
-	apt-get update; \
-	apt-get install -y --no-install-recommends \
-		libgmp-dev \
-	; \
-	rm -rf /var/lib/apt/lists/*; \
-	docker-php-ext-install bcmath
 
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
@@ -57,9 +45,8 @@ ENV PHP_INI_SCAN_DIR=":$PHP_INI_DIR/app.conf.d"
 ###< recipes ###
 
 COPY --link docker/frankenphp/conf.d/10-app.ini $PHP_INI_DIR/app.conf.d/
-COPY --link docker/frankenphp/conf.d/bcmath.ini $PHP_INI_DIR/conf.d/
 COPY --link --chmod=755 docker/frankenphp/docker-entrypoint.sh /usr/local/bin/docker-entrypoint
-COPY --link docker/frankenphp/Caddyfile* /etc/frankenphp/
+COPY --link docker/frankenphp/Caddyfile /etc/frankenphp/Caddyfile
 
 ENTRYPOINT ["docker-entrypoint"]
 
@@ -100,7 +87,7 @@ RUN set -eux; \
 
 # copy sources
 COPY --link . ./
-RUN rm -Rf docker/frankenphp/
+RUN rm -Rf frankenphp/
 
 RUN set -eux; \
 	mkdir -p var/cache var/log; \

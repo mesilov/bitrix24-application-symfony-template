@@ -69,69 +69,61 @@ structure-init:
 docker-build:
 	$(DOCKER_COMPOSE) build
 
+.PHONY: docker-build-prod
+docker-build-prod:
+	$(DOCKER_COMPOSE) -f compose.yaml -f compose.prod.yaml build
+
 .PHONY: docker-up
 docker-up:
 	$(DOCKER_COMPOSE) up -d
+
+.PHONY: docker-up-prod
+docker-up-prod:
+	$(DOCKER_COMPOSE) -f compose.yaml -f compose.prod.yaml up -d
 
 .PHONY: docker-down
 docker-down:
 	$(DOCKER_COMPOSE) down --remove-orphans
 
+.PHONY: docker-down-prod
+docker-down-prod:
+	$(DOCKER_COMPOSE) -f compose.yaml -f compose.prod.yaml down --remove-orphans
+
 .PHONY: docker-restart
 docker-restart: docker-down docker-up
+
+.PHONY: docker-restart-prod
+docker-restart-prod: docker-down-prod docker-up-prod
 
 # work with composer
 .PHONY: composer-install
 composer-install:
-	$(DOCKER_COMPOSE) run --rm franken composer install
+	$(DOCKER_COMPOSE) run --rm php composer install
 
 .PHONY: composer-update
 composer-update:
-	$(DOCKER_COMPOSE) run --rm franken composer update
+	$(DOCKER_COMPOSE) run --rm php composer update
 
 .PHONY: composer-dumpautoload
 composer-dumpautoload:
-	$(DOCKER_COMPOSE) run --rm franken composer dumpautoload
+	$(DOCKER_COMPOSE) run --rm php composer dumpautoload
 
 # call composer with any parameters
 # make composer install
 # make composer "install --no-dev"
 .PHONY: composer
 composer:
-	$(DOCKER_COMPOSE) run --rm franken composer $(filter-out $@,$(MAKECMDGOALS))
+	$(DOCKER_COMPOSE) run --rm php composer $(filter-out $@,$(MAKECMDGOALS))
 
 pg-backup:
 	$(DOCKER_COMPOSE) exec -it database pg_dump --format=c --verbose --file=/backup/cma_database_app_$(shell date "+%Y%m%dT%H%M%Sz%z").custom.pgdump
 pg-restore:
 	$(DOCKER_COMPOSE) exec -it database pg_restore --format=c --clean --single-transaction --verbose --dbname=${PGDATABASE} /backup/$(filter-out $@,$(MAKECMDGOALS))
 
-# Environment management commands
-.PHONY: env-dev
-env-dev:
-	@if [ -f .env.local ]; then \
-		sed -i.bak '/^CADDY_ENV=/d' .env.local && \
-		echo "CADDY_ENV=dev" >> .env.local; \
-	else \
-		echo "CADDY_ENV=dev" > .env.local; \
-	fi
-	@echo "🔄 Switched to development environment (app.localhost)"
-	@echo "📝 RabbitMQ UI: http://localhost:15672 (requires authentication)"
-	@echo "📝 Restart containers: make docker-restart"
-
-
-.PHONY: env-status
-env-status:
-	@if [ -f .env.local ] && grep -q "^CADDY_ENV=" .env.local; then \
-		echo "📍 Current environment: $$(grep "^CADDY_ENV=" .env.local | cut -d'=' -f2)"; \
-	else \
-		echo "📍 Current environment: dev (default)"; \
-	fi
-	@echo "Available environments: dev, test, prod"
-
 .PHONY: validate-caddy-config
 validate-caddy-config:
 	@echo "🔍 Validating current Caddy configuration..."
-	$(DOCKER_COMPOSE) run --rm --no-deps franken frankenphp validate --config /etc/frankenphp/Caddyfile
+	$(DOCKER_COMPOSE) run --rm --no-deps php frankenphp validate --config /etc/frankenphp/Caddyfile
 
 # Monitoring & Debugging commands
 .PHONY: logs-all
@@ -139,10 +131,10 @@ logs-all:
 	@echo "📋 Showing logs from all containers..."
 	$(DOCKER_COMPOSE) logs --tail=20
 
-.PHONY: logs-franken
-logs-franken:
+.PHONY: logs-php
+logs-php:
 	@echo "📋 Showing FrankenPHP logs..."
-	$(DOCKER_COMPOSE) logs --tail=50 franken
+	$(DOCKER_COMPOSE) logs --tail=50 php
 
 .PHONY: ps
 ps:
