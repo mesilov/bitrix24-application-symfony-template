@@ -107,13 +107,18 @@ composer-update:
 .PHONY: composer-dumpautoload
 composer-dumpautoload:
 	$(DOCKER_COMPOSE) run --rm php composer dumpautoload
-
 # call composer with any parameters
 # make composer install
 # make composer "install --no-dev"
 .PHONY: composer
 composer:
 	$(DOCKER_COMPOSE) run --rm php composer $(filter-out $@,$(MAKECMDGOALS))
+
+.PHONY: dev-app-dump-cache
+dev-app-dump-cache:
+	make composer-dumpautoload
+	$(DOCKER_COMPOSE) run --rm php php bin/console cache:clear
+
 
 pg-backup:
 	$(DOCKER_COMPOSE) exec -it database pg_dump --format=c --verbose --file=/backup/cma_database_app_$(shell date "+%Y%m%dT%H%M%Sz%z").custom.pgdump

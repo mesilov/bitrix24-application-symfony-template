@@ -19,6 +19,11 @@ services:
       # The two next lines can be removed after initial installation
       SYMFONY_VERSION: ${SYMFONY_VERSION:-}
       STABILITY: ${STABILITY:-stable}
+      # bitrix24 application
+      BITRIX24_PHP_SDK_APPLICATION_CLIENT_ID: ${BITRIX24_PHP_SDK_APPLICATION_CLIENT_ID}
+      BITRIX24_PHP_SDK_APPLICATION_CLIENT_SECRET: ${BITRIX24_PHP_SDK_APPLICATION_CLIENT_SECRET}
+      BITRIX24_PHP_SDK_APPLICATION_SCOPE: ${BITRIX24_PHP_SDK_APPLICATION_SCOPE}
+      BITRIX24_PHP_SDK_LOCAL_APPLICATION_DOMAIN: ${BITRIX24_PHP_SDK_LOCAL_APPLICATION_DOMAIN}
     volumes:
       - caddy_data:/data
       - caddy_config:/config
@@ -36,11 +41,11 @@ services:
         published: ${HTTP3_PORT:-443}
         protocol: udp
 
-# Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
-###> symfony/mercure-bundle ###
-###< symfony/mercure-bundle ###
+  # Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
+  ###> symfony/mercure-bundle ###
+  ###< symfony/mercure-bundle ###
 
-###> doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
   database:
     container_name: database
     image: postgres:${POSTGRES_VERSION:-16}-alpine
@@ -56,7 +61,7 @@ services:
       PGUSER: ${POSTGRES_USER:-app}
       PGPASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
     healthcheck:
-      test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB:-app}", "-U", "${POSTGRES_USER:-app}"]
+      test: [ "CMD", "pg_isready", "-d", "${POSTGRES_DB:-app}", "-U", "${POSTGRES_USER:-app}" ]
       timeout: 5s
       retries: 5
       start_period: 60s

@@ -26,6 +26,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Uid\Uuid;
 use Throwable;
 use Bitrix24\Lib\Bitrix24Accounts;
+use Bitrix24\Lib\Bitrix24Accounts\ValueObjects\Domain;
 
 class LocalAppLifecycleController extends AbstractController
 {
@@ -71,19 +72,24 @@ class LocalAppLifecycleController extends AbstractController
             //todo hide account id into command?
             $b24AccountId = Uuid::v7();
             // save auth tokens and application token
+
+
             $this->installStartHandler->handle(
                 new Bitrix24Accounts\UseCase\InstallStart\Command(
                     $b24AccountId,
                     $b24ServiceBuilder->getMainScope()->main()->getCurrentUserProfile()->getUserProfile()->ID,
                     $b24ServiceBuilder->getMainScope()->main()->getCurrentUserProfile()->getUserProfile()->ADMIN,
                     $b24Event->getAuth()->member_id,
-                    $b24Event->getAuth()->domain,
-                    $b24Event->getAuth()->access_token,
-                    //todo where find app version?
-                    1,
+                    new Domain($b24Event->getAuth()->domain),
+                    $b24Event->getAuth()->authToken,
+                    (int)$b24Event->getEventPayload()['data']['VERSION'],
                     $b24Event->getAuth()->scope,
                 )
             );
+            //todo add install finish handler
+            // fix master account problem
+            // fix auth_token_expires_in
+
 
 
             $response = new Response('OK', 200);
