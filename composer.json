@@ -9,10 +9,15 @@
         "php": ">=8.4.11",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "darsyn/ip": "^5.0.1",
+        "darsyn/ip-doctrine": "^5.0",
         "doctrine/dbal": "^3.10.1",
         "doctrine/doctrine-bundle": "^2.15.1",
         "doctrine/doctrine-migrations-bundle": "^3.4.2",
         "doctrine/orm": "^3.5.2",
+        "giggsey/libphonenumber-for-php": "^8.13.55",
+        "nesbot/carbon": "^3.10.2",
+        "odolbeau/phone-number-bundle": ">=5",
         "runtime/frankenphp-symfony": "^0.2.0",
         "symfony/console": "7.3.*",
         "symfony/dotenv": "7.3.*",
@@ -20,6 +25,7 @@
         "symfony/framework-bundle": "7.3.*",
         "symfony/runtime": "7.3.*",
         "symfony/yaml": "7.3.*",
+        "symfony/monolog-bundle": "^3.10",
         "mesilov/bitrix24-php-lib": "dev-dev"
     }
     ,
