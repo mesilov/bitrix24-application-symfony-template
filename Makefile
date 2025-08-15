@@ -118,7 +118,15 @@ composer:
 dev-app-dump-cache:
 	make composer-dumpautoload
 	$(DOCKER_COMPOSE) run --rm php php bin/console cache:clear
+.PHONY: app-migrations-make
+app-migrations-make:
+	make dev-app-dump-cache
+	$(DOCKER_COMPOSE) run --rm php php bin/console make:migration --no-interaction
 
+.PHONY: app-migrations-migrate
+app-migrations-migrate:
+	make dev-app-dump-cache
+	$(DOCKER_COMPOSE) run --rm php php bin/console doctrine:migrations:migrate --no-interaction
 
 pg-backup:
 	$(DOCKER_COMPOSE) exec -it database pg_dump --format=c --verbose --file=/backup/cma_database_app_$(shell date "+%Y%m%dT%H%M%Sz%z").custom.pgdump
