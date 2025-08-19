@@ -21,7 +21,7 @@ services:
         resource: '../src/'
 
     # Bitrix24 SDK services
-    Bitrix24\Lib\Bitrix24Accounts\UseCase\InstallStart\Handler:
+    Bitrix24\Lib\ApplicationInstallations\UseCase\Install\Handler:
         autowire: true
     Bitrix24\Lib\Services\Flusher:
         autowire: true
@@ -29,6 +29,7 @@ services:
     # Bitrix24 SDK repository bindings
     Bitrix24\SDK\Application\Contracts\Bitrix24Accounts\Repository\Bitrix24AccountRepositoryInterface:
         class: Bitrix24\Lib\Bitrix24Accounts\Infrastructure\Doctrine\Bitrix24AccountRepository
-
+    Bitrix24\SDK\Application\Contracts\ApplicationInstallations\Repository\ApplicationInstallationRepositoryInterface:
+        class: Bitrix24\Lib\ApplicationInstallations\Infrastructure\Doctrine\ApplicationInstallationRepository
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
