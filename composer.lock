@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bitrix24/b24phpsdk.git",
-                "reference": "85987e4b25f60a4425c2caa80162163377cf311d"
+                "reference": "260d5be61732cae6475bba8d416cc2c6c4bdb363"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bitrix24/b24phpsdk/zipball/85987e4b25f60a4425c2caa80162163377cf311d",
-                "reference": "85987e4b25f60a4425c2caa80162163377cf311d",
+                "url": "https://api.github.com/repos/bitrix24/b24phpsdk/zipball/260d5be61732cae6475bba8d416cc2c6c4bdb363",
+                "reference": "260d5be61732cae6475bba8d416cc2c6c4bdb363",
                 "shasum": ""
             },
             "require": {
@@ -90,7 +90,7 @@
                 "issues": "https://github.com/bitrix24/b24phpsdk/issues",
                 "source": "https://github.com/bitrix24/b24phpsdk/tree/dev"
             },
-            "time": "2025-08-11T09:57:26+00:00"
+            "time": "2025-08-19T19:41:09+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1064,16 +1064,16 @@
         },
         {
             "name": "doctrine/migrations",
-            "version": "3.9.2",
+            "version": "3.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "fa94c6f06b1bc6d4759481ec20b8b81d13e861be"
+                "reference": "1b88fcb812f2cd6e77c83d16db60e3cf1e35c66c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/fa94c6f06b1bc6d4759481ec20b8b81d13e861be",
-                "reference": "fa94c6f06b1bc6d4759481ec20b8b81d13e861be",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/1b88fcb812f2cd6e77c83d16db60e3cf1e35c66c",
+                "reference": "1b88fcb812f2cd6e77c83d16db60e3cf1e35c66c",
                 "shasum": ""
             },
             "require": {
@@ -1147,7 +1147,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/migrations/issues",
-                "source": "https://github.com/doctrine/migrations/tree/3.9.2"
+                "source": "https://github.com/doctrine/migrations/tree/3.9.4"
             },
             "funding": [
                 {
@@ -1163,7 +1163,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-29T11:36:14+00:00"
+            "time": "2025-08-19T06:41:07+00:00"
         },
         {
             "name": "doctrine/orm",
@@ -1764,12 +1764,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mesilov/bitrix24-php-lib.git",
-                "reference": "98f4bebb827b80e5b8e0f2b958c0cf2df82dea89"
+                "reference": "253ce10213cc8505b3381aa04464a189a9919050"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mesilov/bitrix24-php-lib/zipball/98f4bebb827b80e5b8e0f2b958c0cf2df82dea89",
-                "reference": "98f4bebb827b80e5b8e0f2b958c0cf2df82dea89",
+                "url": "https://api.github.com/repos/mesilov/bitrix24-php-lib/zipball/253ce10213cc8505b3381aa04464a189a9919050",
+                "reference": "253ce10213cc8505b3381aa04464a189a9919050",
                 "shasum": ""
             },
             "require": {
@@ -1841,7 +1841,7 @@
                 "issues": "https://github.com/mesilov/bitrix24-php-lib/issues?state=open",
                 "source": "https://github.com/mesilov/bitrix24-php-lib"
             },
-            "time": "2025-08-11T14:51:01+00:00"
+            "time": "2025-08-17T16:32:50+00:00"
         },
         {
             "name": "mesilov/moneyphp-percentage",
@@ -6280,12 +6280,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "0479005335290f5c772337cf359599dad65bb63f"
+                "reference": "45efa5832686533f38dc0445a8b185f6d0649c2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/0479005335290f5c772337cf359599dad65bb63f",
-                "reference": "0479005335290f5c772337cf359599dad65bb63f",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/45efa5832686533f38dc0445a8b185f6d0649c2f",
+                "reference": "45efa5832686533f38dc0445a8b185f6d0649c2f",
                 "shasum": ""
             },
             "conflict": {
@@ -6694,7 +6694,7 @@
                 "luyadev/yii-helpers": "<1.2.1",
                 "macropay-solutions/laravel-crud-wizard-free": "<3.4.17",
                 "maestroerror/php-heic-to-jpg": "<1.0.5",
-                "magento/community-edition": "<2.4.5.0-patch13|==2.4.6|>=2.4.6.0-patch1,<2.4.6.0-patch11|>=2.4.7.0-beta1,<2.4.7.0-patch6|>=2.4.8.0-beta1,<2.4.8.0-patch1",
+                "magento/community-edition": "<2.4.5.0-patch14|==2.4.6|>=2.4.6.0-patch1,<2.4.6.0-patch12|>=2.4.7.0-beta1,<2.4.7.0-patch7|>=2.4.8.0-beta1,<2.4.8.0-patch1",
                 "magento/core": "<=1.9.4.5",
                 "magento/magento1ce": "<1.9.4.3-dev",
                 "magento/magento1ee": ">=1,<1.14.4.3-dev",
@@ -6960,6 +6960,7 @@
                 "snipe/snipe-it": "<8.1",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "socialiteproviders/steam": "<1.1",
+                "soosyze/soosyze": "<=2",
                 "spatie/browsershot": "<5.0.5",
                 "spatie/image-optimizer": "<1.7.3",
                 "spencer14420/sp-php-email-handler": "<1",
@@ -7234,7 +7235,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-08-12T21:05:30+00:00"
+            "time": "2025-08-15T23:05:36+00:00"
         },
         {
             "name": "symfony/maker-bundle",

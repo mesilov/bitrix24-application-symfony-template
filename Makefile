@@ -61,8 +61,11 @@ endif
 structure-init:
 	mkdir -p volumes/database-backup
 	chmod 0777 volumes/database-backup
+	mkdir -p var/log
+	chmod 0777 var/log
 	mkdir -p var/log/frankenphp
 	chmod 0777 var/log/frankenphp
+
 
 # work with docker
 .PHONY: docker-build

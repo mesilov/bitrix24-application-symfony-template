@@ -37,8 +37,14 @@ if [ "$1" = 'frankenphp' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 		fi
 	fi
 
-	setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX var
-	setfacl -dR -m u:www-data:rwX -m u:"$(whoami)":rwX var
+	# Set file permissions (setfacl may not be available on all systems like macOS)
+	if command -v setfacl > /dev/null 2>&1; then
+		setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX var 2>/dev/null || true
+		setfacl -dR -m u:www-data:rwX -m u:"$(whoami)":rwX var 2>/dev/null || true
+	else
+		# Fallback for systems without setfacl (like macOS)
+		chmod -R 777 var 2>/dev/null || true
+	fi
 
 	echo 'PHP app ready!'
 fi
